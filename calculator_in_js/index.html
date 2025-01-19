@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculator in JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .calculator {
+      width: 320px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 5px;
+    }
+    #display {
+      grid-column: 1 / 6;
+      height: 40px;
+      text-align: right;
+      font-size: 1.2em;
+    }
+    button {
+      font-size: 1em;
+      padding: 10px;
+      cursor: pointer;
+    }
+    /* Make advanced function buttons stand out if you like */
+    .fn {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calculator">
+    <!-- Display -->
+    <input type="text" id="display" value="0" readonly />
+
+    <!-- Row 1: sqrt, +/-, exp, back (CE), C -->
+    <button class="fn" onclick="handleButton('sqrt')">sqrt</button>
+    <button class="fn" onclick="handleButton('pm')">+/-</button>
+    <button class="fn" onclick="handleButton('exp')">exp</button>
+    <button class="fn" onclick="handleButton('back')">CE</button>
+    <button class="fn" onclick="handleButton('C')">C</button>
+
+    <!-- Row 2: 7, 8, 9, log, / -->
+    <button onclick="handleButton('7')">7</button>
+    <button onclick="handleButton('8')">8</button>
+    <button onclick="handleButton('9')">9</button>
+    <button class="fn" onclick="handleButton('log')">log</button>
+    <button onclick="handleButton('/')">/</button>
+
+    <!-- Row 3: 4, 5, 6, tan, * -->
+    <button onclick="handleButton('4')">4</button>
+    <button onclick="handleButton('5')">5</button>
+    <button onclick="handleButton('6')">6</button>
+    <button class="fn" onclick="handleButton('tan')">tan</button>
+    <button onclick="handleButton('*')">*</button>
+
+    <!-- Row 4: 1, 2, 3, cos, - -->
+    <button onclick="handleButton('1')">1</button>
+    <button onclick="handleButton('2')">2</button>
+    <button onclick="handleButton('3')">3</button>
+    <button class="fn" onclick="handleButton('cos')">cos</button>
+    <button onclick="handleButton('-')">-</button>
+
+    <!-- Row 5: 0, ., =, sin, + -->
+    <button onclick="handleButton('0')">0</button>
+    <button onclick="handleButton('.')">.</button>
+    <button onclick="handleButton('=')">=</button>
+    <button class="fn" onclick="handleButton('sin')">sin</button>
+    <button onclick="handleButton('+')">+</button>
+
+    <!-- Row 6: Conversion to Binary, Octal, Hex (spans entire row) -->
+    <button class="fn" onclick="handleButton('bin')">binary</button>
+    <button class="fn" onclick="handleButton('oct')">octal</button>
+    <button class="fn" onclick="handleButton('hex')">hex</button>
+    
+    <!-- (You can add more rows or help button if you wish) -->
+  </div>
+
+  <script>
+    let display   = document.getElementById('display');
+    let result    = 0;        // current accumulated result
+    let lastOp    = '=';      // last operation (+, -, *, /, sqrt, etc.)
+    let startNew  = true;     // if true, next number input overwrites display
+
+    function handleButton(btn) {
+      // 1) If it's a digit or decimal point or +/- or CE or C...
+      if (/^[0-9.]$/.test(btn) || ['pm','back','C'].includes(btn)) {
+        handleNumberInput(btn);
+      }
+      // 2) If it's a conversion (binary, oct, hex)...
+      else if (['bin','oct','hex'].includes(btn)) {
+        handleConversion(btn);
+      }
+      // 3) If it's =, +, -, *, /, sqrt, sin, cos, tan, log, exp...
+      else {
+        handleOperator(btn);
+      }
+    }
+
+    function handleNumberInput(btn) {
+      let current = display.value;
+
+      // If we just pressed an operator (=, +, -, etc.) and are starting a new number:
+      if (startNew) {
+        current = '';
+        startNew = false;
+      }
+
+      switch (btn) {
+        case 'pm':  // plus/minus
+          // If display is currently 0 or empty, make it '-'
+          if (current === '0' || current === '') {
+            display.value = '-';
+            startNew = false;
+          } else if (current.startsWith('-')) {
+            // remove the negative
+            display.value = current.substring(1);
+          } else {
+            // add the negative
+            display.value = '-' + current;
+          }
+          return;
+
+        case 'back':  // CE (back one char)
+          if (current.length > 0) {
+            display.value = current.slice(0, -1) || '0';
+          }
+          return;
+
+        case 'C':     // clear
+          display.value = '0';
+          result = 0;
+          lastOp = '=';
+          startNew = true;
+          return;
+
+        default:
+          // It's a digit or '.' 
+          if (btn === '.' && current.includes('.')) {
+            // Ignore if already has a dot
+            return;
+          }
+          // Append the digit
+          display.value = (current === '0') ? btn : current + btn;
+      }
+    }
+
+    function handleOperator(op) {
+      // First, perform the previous operation on the current display value
+      let x = parseFloat(display.value);
+
+      if (startNew && op !== '=') {
+        // If we press an operator repeatedly, just update lastOp
+        lastOp = op;
+        return;
+      }
+
+      switch (lastOp) {
+        case '+': result = result + x; break;
+        case '-': result = result - x; break;
+        case '*': result = result * x; break;
+        case '/': 
+          if (x === 0) {
+            alert("Cannot divide by zero");
+            result = 0;
+          } else {
+            result = result / x;
+          }
+          break;
+        case '=': result = x; break;
+        case 'sqrt': result = Math.sqrt(x); break;
+        case 'sin':  result = Math.sin(x); break;
+        case 'cos':  result = Math.cos(x); break;
+        case 'tan':  result = Math.tan(x); break;
+        case 'log':  result = Math.log(x); break;  // natural log
+        case 'exp':  result = Math.exp(x); break;
+        default: /* no-op */
+      }
+
+      display.value = result;
+      lastOp = op;
+      startNew = true; // next number input starts fresh
+    }
+
+    function handleConversion(convType) {
+      // Convert the current display (assuming an integer) to binary, oct, or hex
+      let current = parseInt(display.value, 10);
+      if (isNaN(current)) {
+        alert("Please enter a valid integer before converting.");
+        return;
+      }
+      switch(convType) {
+        case 'bin': display.value = current.toString(2);  break;
+        case 'oct': display.value = current.toString(8);  break;
+        case 'hex': display.value = current.toString(16); break;
+      }
+      // After converting, we might treat that as the new 'result'
+      result = parseFloat(display.value) || 0;
+      lastOp = '=';
+      startNew = true;
+    }
+  </script>
+</body>
+</html>
