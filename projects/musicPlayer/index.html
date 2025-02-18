@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>music player</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">MyMusic</div>
+    <nav>
+      <ul>
+        <li><a href="#">Main</a></li>
+        <li><a href="#">Discover</a></li>
+        <li><a href="#">My Playlist</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="main-header">
+      <div class="title">jian</div>
+      <div class="tabs">
+        <a href="#" class="active"><strong>Songs</strong></a>
+        <a href="#">Playlist</a>
+        <a href="#">Album</a>
+        <a href="#">MV</a>
+      </div>
+    </div>
+
+    <!-- Song List -->
+    <div class="song-list">
+      <table class="song-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody id="song-table-body">
+          
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Player Bar -->
+    <div class="player-bar">
+      <div class="player-controls">
+        <button id="prevBtn">⏮</button>
+        <button id="playPauseBtn">▶</button>
+        <button id="nextBtn">⏭</button>
+      </div>
+      <div class="player-progress">
+        <input type="range" id="progressBar" min="0" max="100" value="0">
+      </div>
+      <div class="player-info">
+        <img src="https://via.placeholder.com/40" alt="Album Art" id="albumArt" />
+        <div>
+          <div class="track-name" id="trackName">Track Name</div>
+          <div class="artist-name" id="artistName">Artist Name</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  
+</body>
+</html>
