@@ -83,3 +83,14 @@
     color: #888;
     margin: 2rem 0;
   }
+
+  /* The “go back” link */
+  .go-back {
+    font-size: 1.2rem;
+    color: #0070f3;
+    padding: 0 5rem;
+  }
+
+  .go-back:hover {
+    font-style: italic;
+  }

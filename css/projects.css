@@ -31,6 +31,7 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 1rem;
+    margin-top: 3rem;
   }
 
   /* ---------- Projects Grid ---------- */
@@ -98,4 +99,15 @@
     font-size: 0.9rem;
     color: #888;
     margin: 2rem 0;
+  }
+
+  /* The “go back” link */
+  .go-back {
+    font-size: 1.2rem;
+    color: black;
+    margin: 20px;
+  }
+
+  .go-back:hover {
+    font-style: italic;
   }
