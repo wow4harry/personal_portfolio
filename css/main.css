@@ -36,7 +36,7 @@ body {
 	transform-style: preserve-3d;
 	transition: all 0.5s;
 
-	transform: rotateX(-20deg) rotateY(30deg);
+	/* transform: rotateX(-20deg) rotateY(30deg); */
 }
 
 .top-links nav ul li:hover {
@@ -44,12 +44,11 @@ body {
 }
 
 .top-links nav ul li a:first-child {
-	background-color: #84a98c;
 	transform: translateZ(20px);
 }
 
 .top-links nav ul li a:last-child {
-	background-color: #cad2c5;
+	background-color: #007bff78;
 	transform: rotateX(90deg) translateZ(60px);
 }
 
@@ -62,7 +61,8 @@ body {
 }
 
 .top-links nav ul li a:hover {
-	color: #007dff;
+	/* color: #007dff; */
+	color: #fff;
 }
 
 /* 主体内容区域 */
