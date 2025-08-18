@@ -58,7 +58,7 @@ body {
 	display: flex;
 	justify-content: center;
 	gap: 1.5rem;
-	flex: 2;
+	flex: 1;
 }
 
 .top-links nav ul li {
@@ -115,7 +115,7 @@ body {
 }
 
 .top-links nav ul li a:last-child {
-	background-color: #007bff78;
+	background-color: #8386894b;
 	transform: rotateX(90deg) translateZ(60px);
 }
 
