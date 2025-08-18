@@ -1,46 +1,18 @@
-# Jian's Portfolio Website
+# thisisjian.com
 
-Welcome to my personal portfolio website! 🚀
+Personal website to practice my front end skills
 
-## 🌐 Live Preview
-You can check out my website [here](https://harry-justharry.github.io/personal_portfolio/).
+## Link
 
-## 📁 Project Structure
-```
-📦 jian.com
-├── 📂 css
-│   └── main.css
-├── 📂 html
-│   ├── projects.html
-│   ├── resume.html
-│   ├── message.html
-├── 📂 img
-│   └── profile-pic.jpg
-├── 📂 projects
-│   └── blog
-│       └── index.html
-├── index.html
-└── README.md
-```
+You can check out my website [here](https://thisisjian.com).
 
-## 🚀 Technologies Used
+## Technologies Used
+
 - HTML
 - CSS
+- JavaScript
 
-## 📌 Features
-- Navigation bar with links to Projects, Blog, Resume, and Message page
-- Personal introduction with a profile picture
-- List of hobbies and interests
-- Social media links (GitHub, Xiaohongshu, LinkedIn, Instagram)
-- Simple footer with copyright information
+## To-Do
 
-## 🎯 To-Do
-- 
-
-## 📜 License
-- Not applicable here :)
-
----
-💡 Feel free to contribute or suggest improvements!
-
- 
+- [x] add theme feature
+- [ ] use api
