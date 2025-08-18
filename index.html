@@ -4,13 +4,15 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>jian.home</title>
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 		<link rel="shortcut icon" type="image/x-icon" href="./img/favicon.png" />
 		<link rel="stylesheet" href="css/main.css" />
 	</head>
 	<body>
 		<!-- nav bar -->
 		<header class="top-links">
-			<nav>
+			<nav class="top-links-content">
+				<div class="logo"></div>
 				<ul>
 					<li>
 						<a href="html/projects.html" target="_self">projects</a>
@@ -29,8 +31,14 @@
 						<a href="html/message.html" target="_self">留言板</a>
 					</li>
 				</ul>
+				<div class="theme-button-area">
+					<span class="material-symbols-outlined theme-button icon-light"> light_mode </span>
+					<span class="material-symbols-outlined theme-button icon-dark"> dark_mode </span>
+				</div>
 			</nav>
 		</header>
+
+		<!-- theme change button -->
 
 		<!-- main body -->
 		<main class="content">
@@ -78,5 +86,6 @@
 		<footer class="footer">
 			<p>© 2025 Jian Yang</p>
 		</footer>
+		<script src="/js/main.js"></script>
 	</body>
 </html>
