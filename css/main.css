@@ -81,7 +81,6 @@ body {
 	justify-content: left;
 	align-items: center;
 	flex: 1;
-	background-color: pink;
 }
 
 .theme-button {
@@ -344,7 +343,7 @@ body {
 
 	.top-links .top-links-content ul {
 		gap: 0.5rem 0.75rem;
-		justify-content: center;
+		justify-content: space-evenly;
 	}
 
 	.top-links nav ul li {
