@@ -53,7 +53,8 @@ body {
 }
 
 .top-links .top-links-content ul {
-	width: 620px;
+	width: 100%;
+	max-width: 620px;
 	list-style: none;
 	display: flex;
 	justify-content: center;
@@ -80,9 +81,11 @@ body {
 	justify-content: left;
 	align-items: center;
 	flex: 1;
+	background-color: pink;
 }
 
 .theme-button {
+	padding-left: 100px;
 	cursor: pointer;
 }
 
@@ -250,4 +253,135 @@ body {
 
 .footer p:hover {
 	text-decoration: underline;
+}
+
+/* =============================== */
+
+/* ---------- Tablet (≤ 768px) ---------- */
+@media (max-width: 768px) {
+	.top-links {
+		padding: 0.75rem 1rem;
+		box-shadow: 0 0 3px var(--shadow);
+	}
+
+	.top-links-content {
+		flex-wrap: wrap;
+		gap: 0.75rem 1rem;
+	}
+
+	.top-links-content .logo {
+		flex: 0 0 100%;
+		height: 0;
+	}
+
+	.top-links .top-links-content ul {
+		width: 100%;
+		flex: 1 0 100%;
+		justify-content: space-around;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.top-links nav ul li {
+		width: auto;
+		height: 36px;
+		line-height: 36px;
+		transition: all 2s;
+	}
+
+	.top-links nav ul li a:last-child {
+		background-color: transparent;
+	}
+
+	.theme-button-area {
+		width: 24px;
+		height: 24px;
+	}
+
+	.theme-button-area .theme-button {
+		padding-left: 0;
+		/* position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%); */
+	}
+
+	.content {
+		max-width: 100%;
+		margin: 1.25rem auto;
+		padding: 0 1rem;
+	}
+
+	.typewriter-text {
+		font-size: 16px;
+		border-right-width: 3px;
+	}
+
+	.profile-section {
+		padding: 1.25rem;
+	}
+
+	.profile-image {
+		width: 120px;
+		height: 120px;
+	}
+
+	.personal-interests {
+		padding: 1.25rem;
+	}
+
+	.footer {
+		font-size: 0.85rem;
+		margin: 1.5rem 0;
+	}
+}
+
+/* ---------- Phone (≤ 480px) ---------- */
+@media (max-width: 480px) {
+	.top-links {
+		padding: 0.5rem 0.75rem;
+	}
+
+	.top-links .top-links-content ul {
+		gap: 0.5rem 0.75rem;
+		justify-content: center;
+	}
+
+	.top-links nav ul li {
+		height: 34px;
+		line-height: 34px;
+	}
+
+	/* Show only one label per item on very small screens */
+	.top-links nav ul li a:first-child {
+		display: inline-block;
+	}
+	.top-links nav ul li a:last-child {
+		display: none;
+	}
+
+	.typewriter-text {
+		font-size: 15px;
+		letter-spacing: 1.5px;
+		border-right-width: 2px;
+	}
+
+	.profile-image {
+		width: 96px;
+		height: 96px;
+	}
+
+	.intro p,
+	.personal-interests p {
+		margin-bottom: 0.75rem;
+	}
+
+	#school_link:hover {
+		background-color: transparent;
+		text-decoration: underline;
+	}
+
+	.footer {
+		font-size: 0.8rem;
+	}
 }
